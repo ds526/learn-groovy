@@ -8,11 +8,23 @@ pipeline {
     Stages {
         Stage("Build") {
 
+            steps {
+
+            }
+
         }
         Stage("Test") {
 
+            steps {
+
+            }
         }
-        Stage("Deploy")
+        Stage("Deploy") {
+
+            steps {
+                
+            }
+        }
     }
 
 }
