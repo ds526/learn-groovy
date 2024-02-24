@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-
+        APP_VERSION = "1.0.0"
     }
 
     stages {
@@ -22,6 +22,7 @@ pipeline {
         stage("Deploy") {
 
             steps {
+                echo "${APP_VERSION}"
                 echo "Deploying the application..."
             }
         }
