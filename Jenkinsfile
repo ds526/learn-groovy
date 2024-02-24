@@ -34,13 +34,13 @@ pipeline {
     }
     post {
         always {
-            //
+            echo "Always run post install..."
         }
         success {
-            //
+            echo "Always run post success of install..."
         }
         failure {
-            //
+            echo "Always run post install failure..."
         }
 
     }
