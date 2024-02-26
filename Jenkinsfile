@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         // Define params here
-        choice(name: 'VERSION', choices['1.0.0', '1.2.0'], description: 'test description')
+        choice(name: 'MY_VERSION', choices['1.0.0', '1.2.0'], description: 'test description')
         booleanParam(name: 'executeTests', defaultValue: true, description: 'bool desc')
     }
     tools {
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 // echo "${APP_VERSION}"
                 echo "Deploying the application..."
-                echo "Deploying version: ${params.VERSION}"
+                echo "Deploying version: ${params.MY_VERSION}"
                 // echo "Deploying with ${SERVER_CREDENTIALS}"
                 withCredentials([
                     usernamePassword(credentialsId: 'ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7', usernameVariable: USER, passwordVariable: PWD)
