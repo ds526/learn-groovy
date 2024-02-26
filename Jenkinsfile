@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        // have tools available to use when building...such as maven mvn etc
+        maven 'Maven'
+    }
 
     environment {
         APP_VERSION = "1.0.0"
@@ -11,6 +15,7 @@ pipeline {
 
             steps {
                 echo "Building the application..."
+                sh "mvn --version"
             }
 
         }
