@@ -14,6 +14,7 @@ pipeline {
 
         }
         stage("Test") {
+            sh "echo ${BRANCH_NAME}"
             when {
                 expression {
                     BRANCH_NAME == 'dev' || BRANCH_NAME == 'main'
