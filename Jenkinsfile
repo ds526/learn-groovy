@@ -41,7 +41,7 @@ pipeline {
                     usernamePassword(credentialsId: 'ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7', usernameVariable: USER, passwordVariable: PWD)
 
                 ]) {
-                    sh "some script ${USER} and ${PWD}"
+                    sh "curl -v -u ${USER}:${PWD} https://www.google.com"
 
                 }
             }
