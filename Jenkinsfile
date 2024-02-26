@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    parameters {
+        // Define params here
+        choice(name: 'VERSION', choices['1.0.0', '1.2.0'], description: 'test description')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'bool desc')
+    }
     tools {
         // have tools available to use when building...such as maven mvn etc
         maven 'Maven'
@@ -22,7 +27,8 @@ pipeline {
         stage("Test") {
             when {
                 expression {
-                    BRANCH_NAME == 'dev' || BRANCH_NAME == 'main'
+                    // BRANCH_NAME == 'dev' || BRANCH_NAME == 'main'
+                    params.executeTests
                 }
             }
 
@@ -34,8 +40,9 @@ pipeline {
         stage("Deploy") {
 
             steps {
-                echo "${APP_VERSION}"
+                // echo "${APP_VERSION}"
                 echo "Deploying the application..."
+                echo "Deploying version: ${VERSION}"
                 // echo "Deploying with ${SERVER_CREDENTIALS}"
                 withCredentials([
                     usernamePassword(credentialsId: 'ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7', usernameVariable: USER, passwordVariable: PWD)
