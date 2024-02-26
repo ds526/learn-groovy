@@ -2,8 +2,8 @@ pipeline {
     agent any
     parameters {
         // Define params here
-        choice(name: 'MY_VERSION', choices['1.0.0', '1.2.0'], description: 'test description')
-        booleanParam(name: 'executeTests', defaultValue: true, description: 'bool desc')
+        choice(name: 'MY_VERSION', choices['1.0.0', '1.2.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     tools {
         // have tools available to use when building...such as maven mvn etc
