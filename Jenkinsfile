@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_VERSION = "1.0.0"
-        SERVER_CREDENTIALS = credentials('ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7')
+        // SERVER_CREDENTIALS = credentials('ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7')
     }
 
     stages {
@@ -31,7 +31,14 @@ pipeline {
             steps {
                 echo "${APP_VERSION}"
                 echo "Deploying the application..."
-                echo "Deploying with ${SERVER_CREDENTIALS}"
+                // echo "Deploying with ${SERVER_CREDENTIALS}"
+                withCredentials([
+                    usernamePassword(credentials: 'ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7', usernameVariable: USER, passwordVariable: PWD)
+
+                ]) {
+                    sh "some script ${USER} and ${PWD}"
+
+                }
             }
         }
     }
