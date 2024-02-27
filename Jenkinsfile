@@ -1,13 +1,5 @@
 pipeline {
     agent { docker { image 'maven:3.3.3' } }
-      stages {
-        stage('log version info') {
-            steps {
-                sh 'mvn --version'
-                sh 'mvn clean install'
-            }
-        }
-    }
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
@@ -24,6 +16,12 @@ pipeline {
     }
 
     stages {
+        stage('log version info') {
+            steps {
+                sh 'mvn --version'
+                sh 'mvn clean install'
+            }
+        }
         stage("Build") {
 
             steps {
