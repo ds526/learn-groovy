@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'maven:amazoncoretto' } }
+    agent { docker { image 'node:20.11.1-alpine3.19' } }
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
@@ -28,7 +28,7 @@ pipeline {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 // sh "mvn --version"
-                sh 'docker build . -t maven'
+                sh 'node --version'
             }
 
         }
