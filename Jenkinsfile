@@ -33,11 +33,11 @@ pipeline {
             }
 
         }
-        stage('Run') {
-            steps {
-                sh 'docker run -i -t maven /bin/bash'
-            }
-        }
+        // stage('Run') {
+        //     steps {
+        //         sh 'docker run -i -t maven /bin/bash'
+        //     }
+        // }
         stage("Test") {
             when {
                 expression {
