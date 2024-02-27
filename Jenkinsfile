@@ -16,20 +16,26 @@ pipeline {
     }
 
     stages {
-        stage('log version info') {
-            steps {
-                sh 'mvn --version'
-                sh 'mvn clean install'
-            }
-        }
+        // stage('log version info') {
+        //     steps {
+        //         sh 'mvn --version'
+        //         sh 'mvn clean install'
+        //     }
+        // }
         stage("Build") {
 
             steps {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 // sh "mvn --version"
+                sh 'docker build . -t 3.3.3'
             }
 
+        }
+        stage('Run') {
+            steps {
+                sh 'docker run --name 3.3.3 3.3.3'
+            }
         }
         stage("Test") {
             when {
