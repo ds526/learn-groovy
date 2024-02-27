@@ -28,13 +28,13 @@ pipeline {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 // sh "mvn --version"
-                sh 'docker build . -t 3.3.3'
+                sh 'docker build . -t maven'
             }
 
         }
         stage('Run') {
             steps {
-                sh 'docker run --name 3.3.3 3.3.3'
+                sh 'docker run -i -t maven /bin/bash'
             }
         }
         stage("Test") {
