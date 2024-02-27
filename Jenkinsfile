@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
-                sh "mvn --version"
+                // sh "mvn --version"
             }
 
         }
