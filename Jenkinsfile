@@ -20,6 +20,7 @@ pipeline {
 
             steps {
                 echo "Building the application..."
+                echo "Deploying version: ${params.MY_VERSION}"
                 sh "mvn --version"
             }
 
@@ -42,7 +43,6 @@ pipeline {
             steps {
                 // echo "${APP_VERSION}"
                 echo "Deploying the application..."
-                echo "Deploying version: ${params.MY_VERSION}"
                 // echo "Deploying with ${SERVER_CREDENTIALS}"
                 withCredentials([
                     usernamePassword(credentialsId: 'ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7', usernameVariable: USER, passwordVariable: PWD)
