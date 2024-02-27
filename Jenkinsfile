@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'maven' } }
+    agent { docker { image 'maven:amazoncoretto' } }
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
