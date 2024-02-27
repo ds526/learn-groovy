@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent { docker { image 'maven' } }
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
