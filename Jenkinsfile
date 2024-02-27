@@ -1,14 +1,22 @@
 pipeline {
-    agent any
+    agent { docker { image 'maven:3.3.3' } }
+      stages {
+        stage('log version info') {
+            steps {
+                sh 'mvn --version'
+                sh 'mvn clean install'
+            }
+        }
+    }
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
-    tools {
-        // have tools available to use when building...such as maven mvn etc
-        maven 'Maven'
-    }
+    // tools {
+    //     // have tools available to use when building...such as maven mvn etc
+    //     maven 'Maven'
+    // }
 
     environment {
         APP_VERSION = "1.0.0"
