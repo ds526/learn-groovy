@@ -28,6 +28,11 @@ pipeline {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 // sh "mvn --version"
+                 withCredentials([
+                    usernamePassword(credentialsId: 'docker-id-1', usernameVariable: DOCKER_USER, passwordVariable: DOCKER_PWD)
+
+                ])
+                sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}"
                 sh 'docker build -t app:latest .'
                 sh 'docker run app:latest'
             }
