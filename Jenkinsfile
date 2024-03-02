@@ -26,12 +26,14 @@ pipeline {
         stage("Build") {
             agent {
                 docker {
-                    image 'alpine'
+                    image 'node:20.11.1-alpine3.19'
                 }
             }
             steps {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
+                sh "node --version"
+
                 // sh "mvn --version"
                 //  withCredentials([
                 //     usernamePassword(credentialsId: 'docker-id-1', usernameVariable: DOCKER_USER, passwordVariable: DOCKER_PWD)
