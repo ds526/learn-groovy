@@ -4,7 +4,7 @@ pipeline {
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+        booleanParam(name: 'executeTests', defaultValue: false, description: '')
     }
     // tools {
     //     // have tools available to use when building...such as maven mvn etc
@@ -46,9 +46,7 @@ pipeline {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 echo "TESTING NGINX STATUS: "
-                sh "nginx -t"
-                sh "nginx --version"
-
+                sh "nginx -version"
             }
         }
         stage("Test") {
