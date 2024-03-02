@@ -46,7 +46,8 @@ pipeline {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 echo "TESTING NGINX STATUS: "
-                sh "systemctl status nginx"
+                sh "nginx -t"
+                sh "nginx --version"
 
             }
         }
