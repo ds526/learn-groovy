@@ -23,7 +23,7 @@ pipeline {
         //         sh 'mvn clean install'
         //     }
         // }
-        stage("Build") {
+        stage("Build Node") {
             agent {
                 docker {
                     image 'node:20.11.1-alpine3.19'
@@ -34,21 +34,22 @@ pipeline {
                 echo "Deploying version: ${params.MY_VERSION}"
                 sh "node --version"
 
-                // sh "mvn --version"
-                //  withCredentials([
-                //     usernamePassword(credentialsId: 'docker-id-1', usernameVariable: DOCKER_USER, passwordVariable: DOCKER_PWD)
-
-                // ])
-                // sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}"
-                // sh 'docker build -t app:latest .'
-                // sh 'docker run app:latest'
             }
         }
-        // stage('Run') {
-        //     steps {
-        //         sh 'docker run -i -t maven /bin/bash'
-        //     }
-        // }
+        stage("Build NGINX") {
+            agent {
+                docker {
+                    image 'nginx'
+                }
+            }
+            steps {
+                echo "Building the application..."
+                echo "Deploying version: ${params.MY_VERSION}"
+                echo "TESTING NGINX STATUS: "
+                sh "systemctl status nginx"
+
+            }
+        }
         stage("Test") {
             when {
                 expression {
@@ -60,6 +61,8 @@ pipeline {
             steps {
                 sh "echo ${BRANCH_NAME}"
                 echo "Testing the application..."
+                echo "RUN HOSTNAME CMD: "
+                sh "hostname"
             }
         }
         stage("Deploy") {
@@ -72,7 +75,8 @@ pipeline {
                     usernamePassword(credentialsId: 'ca1c62d2-653e-4c3d-ae0a-53f5a05b75b7', usernameVariable: USER, passwordVariable: PWD)
 
                 ]) {
-                    sh "curl -v -u ${USER}:${PWD} https://www.google.com"
+                    // sh "curl -v -u ${USER}:${PWD} https://www.google.com"
+                    echo "MY USER: ${USER}"
 
                 }
             }
