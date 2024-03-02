@@ -1,5 +1,6 @@
 pipeline {
-    agent { docker { image 'linux' } }
+    //agent { docker { image 'linux' } }
+    agent any
     parameters {
         // Define params here
         choice(choices: ['1.0.0', '1.2.0'], description: 'Pick Stuff', name: 'MY_VERSION')
@@ -23,20 +24,23 @@ pipeline {
         //     }
         // }
         stage("Build") {
-
+            agent {
+                docker {
+                    image 'alpine'
+                }
+            }
             steps {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 // sh "mvn --version"
-                 withCredentials([
-                    usernamePassword(credentialsId: 'docker-id-1', usernameVariable: DOCKER_USER, passwordVariable: DOCKER_PWD)
+                //  withCredentials([
+                //     usernamePassword(credentialsId: 'docker-id-1', usernameVariable: DOCKER_USER, passwordVariable: DOCKER_PWD)
 
-                ])
-                sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}"
-                sh 'docker build -t app:latest .'
-                sh 'docker run app:latest'
+                // ])
+                // sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}"
+                // sh 'docker build -t app:latest .'
+                // sh 'docker run app:latest'
             }
-
         }
         // stage('Run') {
         //     steps {
