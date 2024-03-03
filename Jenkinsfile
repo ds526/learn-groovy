@@ -79,7 +79,7 @@ pipeline {
                     echo "MY USER: ${USER}"
 
                 }
-                sh "nginx -version"
+                sh "hostname"
             }
         }
     }
