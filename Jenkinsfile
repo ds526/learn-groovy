@@ -47,6 +47,7 @@ pipeline {
                 echo "Deploying version: ${params.MY_VERSION}"
                 echo "TESTING NGINX STATUS: "
                 sh "nginx -version"
+                sh "hostname"
             }
         }
         stage("Test") {
@@ -78,6 +79,7 @@ pipeline {
                     echo "MY USER: ${USER}"
 
                 }
+                sh "nginx -version"
             }
         }
     }
