@@ -50,6 +50,12 @@ pipeline {
                 sh "hostname"
             }
         }
+        stage("Build a Custom Docker Image") {
+            agent any
+            steps {
+                sh 'docker build .'
+            }
+        }
         stage("Test") {
             when {
                 expression {
