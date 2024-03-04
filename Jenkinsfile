@@ -52,7 +52,10 @@ pipeline {
         }
         stage("Build a Custom Docker Image") {
             agent {
-                dockerfile true
+                dockerfile {
+                    filename '$workspace/Dockerfile'
+                    args '-v my_home:/home/'
+                }
             }
             steps {
                 sh 'hostname'
