@@ -59,8 +59,8 @@ pipeline {
             }
             steps {
                 // sh 'hostname'
-                echo "Home Dir is: \$HOME"
-                echo "this is the hostname of the alpine image: hostname"
+                sh "pwd"
+                sh "cd /home/ubuntu"
                 sh "touch my_test_file.txt"
                 echo "Add to test file > my_test_file.txt"
             }
