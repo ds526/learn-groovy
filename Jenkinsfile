@@ -51,9 +51,11 @@ pipeline {
             }
         }
         stage("Build a Custom Docker Image") {
-            agent any
+            agent {
+                dockerfile true
+            }
             steps {
-                sh 'docker build .'
+                sh 'hostname'
             }
         }
         stage("Test") {
