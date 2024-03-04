@@ -59,8 +59,10 @@ pipeline {
             }
             steps {
                 // sh 'hostname'
-                sh 'echo "this is a test" > test_file.txt'
-                sh 'echo "this is the hostname of the alpine image: " hostname'
+                echo "Home Dir is: \$HOME"
+                echo "this is the hostname of the alpine image: hostname"
+                sh "touch my_test_file.txt"
+                echo "Add to test file > my_test_file.txt"
             }
         }
         stage("Test") {
