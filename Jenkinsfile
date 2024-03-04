@@ -54,11 +54,13 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    args '-v my_home:/home/'
+                    args '-v my_home:/home/ubuntu'
                 }
             }
             steps {
-                sh 'hostname'
+                // sh 'hostname'
+                sh 'echo "this is a test" > test_file.txt'
+                sh 'echo "this is the hostname of the alpine image: " hostname'
             }
         }
         stage("Test") {
