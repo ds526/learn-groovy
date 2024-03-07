@@ -15,8 +15,13 @@ println("You entered: $userInput")
 if(nl[nlMidPt] == userInput) {
     println("Target found")
 } else {
-    for(int i in nl) {
-        println(i)
-    }
+    if (nl[nlMidPt] > userInput) {
+        println('''go to right''' + userInput + '''  ''')
 
+    } else {
+        println('''go to left''' + userInput + '''  ''')
+    }
+    // for(int i in nl) {
+    //     println(i)
+    // }
 }

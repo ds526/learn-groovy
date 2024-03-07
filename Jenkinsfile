@@ -65,6 +65,14 @@ pipeline {
                 echo "Add to test file > my_test_file.txt"
             }
         }
+        stage("OWASP Scan") {
+            steps {
+                script {
+                    sh "dependency-check.sh -version"
+                }
+            }
+
+        }
         stage("Test") {
             when {
                 expression {
