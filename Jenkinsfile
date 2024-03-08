@@ -46,8 +46,8 @@ pipeline {
                 sh "node --version"
                 script {
                     echo "MY WORKYSPACE: ${WORKSPACE}"
-                    echo ${defaults.dice.myworkspace}
-                    echo ${defaults.dice.myParam1}
+                    echo "${defaults.dice.myworkspace}"
+                    echo "${defaults.dice.myParam1}"
                 }
 
             }
