@@ -74,6 +74,10 @@ pipeline {
                     --prettyPrint''', odcInstallation: 'dep-chk'
 
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+
+                publishHTML target [
+                    
+                ]
             }
 
         }
