@@ -45,6 +45,7 @@ pipeline {
                 echo "Deploying version: ${params.MY_VERSION}"
                 sh "node --version"
                 script {
+                    echo "MY WORKYSPACE: ${WORKSPACE}"
                     echo ${defaults.dice.myworkspace}
                 }
 
