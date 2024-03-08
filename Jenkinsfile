@@ -67,13 +67,12 @@ pipeline {
         }
         stage("OWASP Scan") {
             steps {
-                dependencyCheck additionalArguments: '''
-                  -o './'
-                  -s './'
-                  -f 'ALL'
-                  --prettyPrint
-                '''
-                odcInstallation: 'OWASP Dependency-Check'
+                dependencyCheck additionalArguments: ''' 
+                    -o "./" 
+                    -s "./"
+                    -f "ALL" 
+                    --prettyPrint''', odcInstallation: 'dep-chk'
+
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
 
