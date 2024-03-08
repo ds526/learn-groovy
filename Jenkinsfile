@@ -1,6 +1,6 @@
 Map defaults = [
     dice: [
-        myworkspace: env.WORKSPACE,
+        myworkspace: "${env.WORKSPACE}",
         myParam1: 'test1',
         myParam2: 'test2',
         myParam3: 'test3',
