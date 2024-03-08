@@ -1,6 +1,6 @@
 Map defaults = [
     dice: [
-        my-workspace: "${WORKSPACE}",
+        myworkspace: "${WORKSPACE}",
         myParam1: 'test1',
         myParam2: 'test2',
         myParam3: 'test3',
@@ -45,7 +45,7 @@ pipeline {
                 echo "Deploying version: ${params.MY_VERSION}"
                 sh "node --version"
                 script {
-                    echo ${defaults.dice.my-workspace}
+                    echo ${defaults.dice.myworkspace}
                 }
 
             }
