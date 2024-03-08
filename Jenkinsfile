@@ -1,3 +1,14 @@
+Map defaults = [
+    dice: [
+        my-workspace: "${WORKSPACE}",
+        myParam1: 'test1',
+        myParam2: 'test2',
+        myParam3: 'test3',
+        myParam4: 'test4',
+        myParam5: 'test5',
+    ]
+];
+
 pipeline {
     //agent { docker { image 'linux' } }
     agent any
@@ -33,6 +44,9 @@ pipeline {
                 echo "Building the application..."
                 echo "Deploying version: ${params.MY_VERSION}"
                 sh "node --version"
+                script {
+                    echo ${defaults.dice.my-workspace}
+                }
 
             }
         }
@@ -76,7 +90,7 @@ pipeline {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 
                 publishHTML target [
-                    
+
                 ]
             }
 
