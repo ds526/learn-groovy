@@ -47,6 +47,7 @@ pipeline {
                 script {
                     echo "MY WORKYSPACE: ${WORKSPACE}"
                     echo ${defaults.dice.myworkspace}
+                    echo ${defaults.dice.myParam1}
                 }
 
             }
