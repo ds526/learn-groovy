@@ -27,9 +27,9 @@ pipeline {
         stage('No docker') {
             agent any
             steps {
+                sh "hostname"
                 sh "mvn --version"
                 sh "node --version"
-                sh "hostname"
             }
         }
     }
