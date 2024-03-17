@@ -12,7 +12,7 @@ pipeline {
             }
         }
         stage('Back to Agent') {
-            agent 'Built-in-node'
+            agent any
             steps {
                 sh 'docker images'
                 sh 'docker ps'
