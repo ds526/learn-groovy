@@ -15,12 +15,11 @@ pipeline {
         }
         stage('Back End') {
             agent {
-                docker {
-                    image 'node:16-alpine'
-                } 
+                dockerfile true
             }
             steps {
                 sh "node --version"
+                sh "curl --version"
                 sh "hostname"
             }
         }
