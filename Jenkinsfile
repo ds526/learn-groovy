@@ -5,9 +5,15 @@ pipeline {
         }
     }
     stages {
-        stage('Test') {
+        stage('Check Container') {
             steps {
                 sh 'node --version'
+                sh 'hostname'
+            }
+        }
+        stage('Back to Agent') {
+            agent any
+            steps {
                 sh 'docker images'
                 sh 'docker ps'
                 sh 'hostname'
