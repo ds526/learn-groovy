@@ -24,6 +24,13 @@ pipeline {
                 sh "hostname"
             }
         }
+        stage('No docker') {
+            steps {
+                sh "mvn --version"
+                sh "node --version"
+                sh "hostname"
+            }
+        }
     }
 }
 
