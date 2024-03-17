@@ -27,8 +27,8 @@ pipeline {
             agent any
             steps {
                 sh "hostname"
-                sh "mvn --version"
-                sh "node --version"
+                sh "docker images"
+                sh "docker ps"
             }
         }
     }
